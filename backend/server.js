@@ -19,32 +19,10 @@ const leagueRoutes = require('./routes/league');
 
 const app = express();
 
-const configuredOrigins = (process.env.FRONTEND_URL || '')
-  .split(',')
-  .map((value) => value.trim())
-  .filter(Boolean)
-  .map((value) => {
-    try {
-      return new URL(value).origin;
-    } catch {
-      return value;
-    }
-  });
-
-const allowedOrigins = Array.from(new Set([
-  'https://pjkabaiya.github.io',
-  'http://localhost:5173',
-  'http://localhost:3000',
-  ...configuredOrigins
-]));
-
 app.use(cors({
-  origin(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-    return callback(new Error('CORS origin not allowed'));
-  }
+  origin: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
