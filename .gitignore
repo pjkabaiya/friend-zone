@@ -1,0 +1,25 @@
+# Dependencies
+backend/node_modules/
+frontend/node_modules/
+
+# Build output
+frontend/dist/
+
+# Environment files
+backend/.env
+frontend/.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Runtime uploads
+backend/uploads/
+
+# Workspace artifact
+nul
