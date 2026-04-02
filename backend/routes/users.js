@@ -168,10 +168,17 @@ router.delete('/:id', auth, adminOnly, async (req, res) => {
       return res.status(404).json({ error: 'User not found.' });
     }
 
-    user.isActive = false;
-    await user.save();
+    // Prevent deleting the last admin user
+    if (user.role === 'admin') {
+      const adminCount = await User.countDocuments({ role: 'admin' });
+      if (adminCount === 1) {
+        return res.status(400).json({ error: 'Cannot delete the last admin user.' });
+      }
+    }
 
-    res.json({ message: 'User deactivated successfully' });
+    await User.findByIdAndDelete(req.params.id);
+
+    res.json({ message: 'User deleted successfully' });
   } catch (error) {
     handleServerError(res, 'users.delete', error);
   }
