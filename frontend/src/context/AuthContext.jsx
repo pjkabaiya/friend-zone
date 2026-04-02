@@ -23,15 +23,22 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const token = localStorage.getItem('friendzone_token');
     if (token) {
-      api.auth.me().then(data => {
-        const normalizedUser = normalizeUser(data);
-        if (normalizedUser?._id) {
-          setUserState(normalizedUser);
-        } else {
+      api.auth.me()
+        .then(data => {
+          const normalizedUser = normalizeUser(data);
+          if (normalizedUser?._id) {
+            setUserState(normalizedUser);
+          } else {
+            localStorage.removeItem('friendzone_token');
+          }
+        })
+        .catch(() => {
           localStorage.removeItem('friendzone_token');
-        }
-        setLoading(false);
-      });
+          setUserState(null);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     } else {
       setLoading(false);
     }

@@ -29,15 +29,23 @@ const unwrapList = (payload) => {
 };
 
 const requestJson = async (url, options = {}) => {
-  const response = await fetch(url, options);
-  const data = await response.json().catch(() => ({}));
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json().catch(() => ({}));
 
-  if (response.status === 401) {
-    localStorage.removeItem('friendzone_token');
-    window.dispatchEvent(new Event('friendzone-auth-expired'));
+    if (response.status === 401) {
+      localStorage.removeItem('friendzone_token');
+      window.dispatchEvent(new Event('friendzone-auth-expired'));
+    }
+
+    if (!response.ok && !data?.error) {
+      return { error: `Request failed (${response.status})` };
+    }
+
+    return data;
+  } catch (error) {
+    return { error: 'Network error: unable to reach server. Please try again.' };
   }
-
-  return data;
 };
 
 export const api = {
