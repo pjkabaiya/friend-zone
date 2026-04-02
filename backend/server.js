@@ -19,7 +19,7 @@ const leagueRoutes = require('./routes/league');
 
 const app = express();
 
-const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:5173')
+const configuredOrigins = (process.env.FRONTEND_URL || '')
   .split(',')
   .map((value) => value.trim())
   .filter(Boolean)
@@ -30,6 +30,13 @@ const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:5173')
       return value;
     }
   });
+
+const allowedOrigins = Array.from(new Set([
+  'https://pjkabaiya.github.io',
+  'http://localhost:5173',
+  'http://localhost:3000',
+  ...configuredOrigins
+]));
 
 app.use(cors({
   origin(origin, callback) {
