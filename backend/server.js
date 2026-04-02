@@ -21,8 +21,15 @@ const app = express();
 
 const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:5173')
   .split(',')
-  .map((origin) => origin.trim())
-  .filter(Boolean);
+  .map((value) => value.trim())
+  .filter(Boolean)
+  .map((value) => {
+    try {
+      return new URL(value).origin;
+    } catch {
+      return value;
+    }
+  });
 
 app.use(cors({
   origin(origin, callback) {
