@@ -2,6 +2,7 @@
   "name": "friend-zone-root",
   "private": true,
   "scripts": {
+    "postinstall": "npm install --prefix backend",
     "build": "cd backend && npm install",
     "start": "cd backend && npm start"
   }
