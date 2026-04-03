@@ -19,6 +19,17 @@ export default function Navbar() {
             FRIEND ZONE
           </Link>
 
+          {user && (
+            <Link to="/profile" className="nav-mobile-user" onClick={() => setMobileOpen(false)}>
+              <img
+                src={getImageUrl(user.avatar) || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user.displayName) + '&background=FF3366&color=fff'}
+                alt={user.displayName}
+                className="nav-avatar"
+              />
+              <span>{user.displayName}</span>
+            </Link>
+          )}
+
           <ul className="nav-links">
             <li><Link to="/" className={isActive('/') ? 'active' : ''}>Home</Link></li>
             <li><Link to="/crew" className={isActive('/crew') ? 'active' : ''}>Crew</Link></li>
