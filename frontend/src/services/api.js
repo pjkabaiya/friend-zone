@@ -9,7 +9,7 @@ export const getImageUrl = (path) => {
     return `${API_ORIGIN}${path}`;
   }
   if (path.startsWith('/avatars')) {
-    return `http://localhost:8787/uploads${path}`;
+    return `${API_ORIGIN}/uploads${path}`;
   }
   return `${UPLOADS_URL}${path}`;
 };
