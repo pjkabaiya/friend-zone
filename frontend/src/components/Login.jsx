@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { api } from '../services/api';
 
 export default function Login() {
   const { login } = useAuth();
@@ -29,15 +30,9 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:8787/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password, displayName })
-      });
-      
-      const data = await res.json();
-      
-      if (!res.ok) {
+      const data = await api.auth.register({ username, password, displayName });
+
+      if (!data?.token) {
         setError(data.error || 'Registration failed');
         setLoading(false);
         return;
@@ -101,7 +96,7 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Create a password"
                 required
-                minLength={4}
+                minLength={8}
               />
               <button type="button" className="password-toggle" onClick={() => setShowPassword(!showPassword)}>
                 {showPassword ? '👁️' : '👁️‍🗨️'}

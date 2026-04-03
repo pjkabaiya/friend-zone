@@ -87,9 +87,7 @@ export default function Gallery() {
   };
 
   const openShareModal = (item) => {
-    const imageUrl = item.imageUrl 
-      ? (item.imageUrl.startsWith('http') ? item.imageUrl : `http://localhost:8787${item.imageUrl}`)
-      : null;
+    const imageUrl = getImageUrl(item.imageUrl);
     setShareUrl(imageUrl || '');
     setShareCaption(item.caption || '');
     setShowShareModal(true);
@@ -114,9 +112,6 @@ export default function Gallery() {
   };
 
   const openLightbox = (item) => {
-    const imageSrc = item.imageUrl 
-      ? (item.imageUrl.startsWith('http') ? item.imageUrl : `http://localhost:8787${item.imageUrl}`)
-      : null;
     setLightbox({ open: true, item });
   };
 
@@ -126,7 +121,7 @@ export default function Gallery() {
 
   const getImageSrc = (item) => {
     if (!item.imageUrl) return null;
-    return item.imageUrl.startsWith('http') ? item.imageUrl : `http://localhost:8787${item.imageUrl}`;
+    return getImageUrl(item.imageUrl);
   };
 
   const filteredItems = filter === 'all' ? items : items.filter(item => item.category === filter);
