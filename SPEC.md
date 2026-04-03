@@ -173,7 +173,7 @@ Fixed top nav with rounded pill buttons, semi-transparent backdrop blur. Logo on
 - Lucide Icons via CDN
 
 ### User Management
-- 6 initial users created via `setup-db.js`
-- **MUNANIA** is the admin with full user management rights
+- Users are created via registration on the frontend
+- **First user registered automatically becomes admin** with full user management rights
 - New users can only be added by the admin
 - JWT tokens expire after 7 days

@@ -9,13 +9,6 @@ cd backend
 npm install
 ```
 
-## First Time Setup
-
-Create users and seed database:
-```bash
-npm run setup
-```
-
 ## Start Server
 
 ```bash
@@ -23,6 +16,8 @@ npm start
 ```
 
 Server runs at `http://localhost:8787`
+
+The first user who registers will automatically become admin with full user management rights.
 
 ## Environment Variables
 
