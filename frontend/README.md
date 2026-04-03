@@ -15,8 +15,6 @@ npm install
 npm run dev
 ```
 
-Frontend runs at `http://localhost:5173`
-
 ## Build for Production
 
 ```bash

@@ -31,14 +31,14 @@ friend-zone/
 ```bash
 cd backend
 npm install
-npm start        # Runs at http://localhost:8787
+npm start
 ```
 
 ### 2. Setup Frontend (new terminal)
 ```bash
 cd frontend
 npm install
-npm run dev      # Runs at http://localhost:5173
+npm run dev
 ```
 
 ## Getting Started
@@ -54,4 +54,4 @@ npm run dev      # Runs at http://localhost:5173
 - Photo Gallery with uploads
 - Events Calendar (birthdays & reunions)
 - Blog Wall with emoji reactions
-- Admin Panel (Munania can manage users)
+- Admin Panel (admin users can manage users)

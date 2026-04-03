@@ -1,5 +1,5 @@
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8787/api';
-const API_ORIGIN = import.meta.env.VITE_API_ORIGIN || 'http://localhost:8787';
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://friend-zone-r1rt.onrender.com/api';
+const API_ORIGIN = import.meta.env.VITE_API_ORIGIN || 'https://friend-zone-r1rt.onrender.com';
 const UPLOADS_URL = `${API_ORIGIN}/uploads`;
 
 export const getImageUrl = (path) => {

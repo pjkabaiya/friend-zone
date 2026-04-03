@@ -15,8 +15,6 @@ npm install
 npm start
 ```
 
-Server runs at `http://localhost:8787`
-
 The first user who registers will automatically become admin with full user management rights.
 
 ## Environment Variables
