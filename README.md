@@ -31,7 +31,6 @@ friend-zone/
 ```bash
 cd backend
 npm install
-npm run setup    # Create users and seed database
 npm start        # Runs at http://localhost:8787
 ```
 
@@ -42,16 +41,11 @@ npm install
 npm run dev      # Runs at http://localhost:5173
 ```
 
-## User Credentials
+## Getting Started
 
-| Name | Username | Password | Role |
-|------|----------|----------|------|
-| **Munania** | MUNANIA | Munania@2024! | **Admin** |
-| Freddi Kang'ethe | FREDDI.KANGETHE | Freddi@2024! | Member |
-| Laura | LAURA | Laura@2024! | Member |
-| Wairimu | WAIRIMU | Wairimu@2024! | Member |
-| Manyatta | MANYATTA | Manyatta@2024! | Member |
-| Juniors | JUNIORS | Juniors@2024! | Member |
+1. **Create your first account** - Register at the site. The first user automatically becomes admin.
+2. **Access Admin Panel** - Admin users can manage members, gallery, events, and more.
+3. **Invite members** - Use the Admin Panel to create accounts for other members.
 
 ## Features
 
